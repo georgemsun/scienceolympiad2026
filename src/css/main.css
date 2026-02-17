@@ -508,7 +508,7 @@ button.pink:focus {
 }
 
 /*** MAIN AND HEADERS ***/
-.header.main .navigation .contents > a {
+.header.main .navigation > .contents > a {
 	display: none;
 }
 .header.main .container {
@@ -710,6 +710,9 @@ button.pink:focus {
 	border-style: solid;
 	border-width: 5px;
 	float: left;
+}
+.navigation .contents > ul > li:first-child {
+	display: none;
 }
 .navigation .contents > ul > li:last-child {
 	margin-right: 0;
@@ -977,6 +980,9 @@ button.pink:focus {
 		overflow-y: scroll;
 		position: fixed;
 	}
+	.navigation.active .fixed {
+		display: none;
+	}
 	.navigation .contents > ul > li:hover,
 	.navigation .contents > ul > li:focus-within {
 		background-color: var(--background);
@@ -984,16 +990,20 @@ button.pink:focus {
 	.navigation.active ~ body {
 		overflow: hidden;
 	}
+	.header.main .navigation.active > .contents > a,
 	.navigation.active > .contents > a,
 	.navigation.active > .contents > ul {
 		display: block;
+	}
+	.navigation .contents ul > li > a {
+		text-decoration: underline;
 	}
 	.navigation .contents > ul {
 		background-color: var(--background);
 		display: none;
 		left: 100px;
 		margin-top: 25px;
-		padding-bottom: 75px;
+		padding-bottom: 125px;
 		padding-left: 100px;
 		padding-right: 100px;
 		position: relative;
@@ -1002,6 +1012,7 @@ button.pink:focus {
 	.navigation .contents > ul > li {
 		border: none;
 		float: none;
+		font-weight: 700;
 		margin: 0;
 		padding: 0;
 	}
@@ -1019,8 +1030,11 @@ button.pink:focus {
 	}
 	.navigation .contents > ul > li > ul > li {
 		max-width: unset;
-		padding: 5px;
+		padding: 10px 5px;
 		white-space: normal;
+	}
+	.footer {
+		padding-bottom: 50px;
 	}
 }
 @media (max-width: 900px) {
@@ -1064,6 +1078,9 @@ button.pink:focus {
 @media (max-width: 450px) {
 	.navigation .contents > a img {
 		display: none;
+	}
+	.navigation .contents > ul > li:first-child {
+		display: block;
 	}
 	.tiles > div,
 	.tiles > a {
