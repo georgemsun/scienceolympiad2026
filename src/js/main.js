@@ -67,6 +67,18 @@ $(function() {
 	$('a:external, a[href$=".pdf"]').attr('target', '_blank');
 });
 
+// Add parameter with current datetime to `soinc.org` URLs to force cache refresh
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('a[href]').forEach(a => {
+		const url = new URL(a.href, window.location.origin);
+
+		if (url.hostname === 'soinc.org' || url.hostname === 'www.soinc.org') {
+			url.searchParams.set('refresh', Date.now());
+			a.href = url.toString();
+		}
+	});
+});
+
 // Copy links to anchors when clicked
 $(function() {
 	$('h1, h2, h3, h4, h5, h6').not('.header *').not('.trifold *').css('cursor', 'pointer');
