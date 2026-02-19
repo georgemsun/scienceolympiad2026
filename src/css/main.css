@@ -171,6 +171,7 @@ h6 {
 	font-family: 'Audiowide', 'Arial', sans-serif;
 	font-style: normal;
 	font-weight: 700;
+	overflow-wrap: break-word;
 }
 a {
 	color: inherit;
@@ -351,28 +352,35 @@ button.pink:focus {
 	flex: 1 0 auto;
 }
 .container h1 {
+	hyphens: auto;
 	margin-top: 0;
 	margin-bottom: 7.5px;
+	overflow-wrap: break-word;
 	padding-top: 35px;
 }
 .container h2 {
+	hyphens: auto;
 	margin-top: 0;
 	margin-bottom: 20px;
+	overflow-wrap: break-word;
 	padding-top: 35px;
 }
 .container h3 {
+	hyphens: auto;
 	margin-top: 0;
 	margin-bottom: 7.5px;
+	overflow-wrap: break-word;
 	padding-top: 35px;
 }
 .container p,
 .container li {
 	font-size: 18px;
 	font-weight: 400;
+	hyphens: auto;
 	line-height: 28px;
 	margin-top: 15px;
 	margin-bottom: 7.5px;
-	word-break: break-word;
+	overflow-wrap: break-word;
 }
 .container ol,
 .container ul {
