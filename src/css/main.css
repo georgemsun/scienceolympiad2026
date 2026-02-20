@@ -314,6 +314,9 @@ button.pink:focus {
 	font-size: 14px;
 	text-align: center;
 }
+.container div.table {
+	overflow-x: auto;
+}
 .container table {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -323,11 +326,16 @@ button.pink:focus {
 .container td {
 	padding: 7px;
 }
+.container th,
+.container td,
+.container td p,
+.container td em {
+	font-size: 16px;
+	line-height: 16px;
+}
 .container td p,
 .container td em {
 	color: #999999;
-	font-size: 13px;
-	line-height: 14px;
 	margin-top: 5px;
 	margin-bottom: 2px;
 }
@@ -1151,9 +1159,6 @@ button.pink:focus {
 	a.button[href]::after {
 		font-size: 10px;
 	} */
-	td {
-		padding: 5px;
-	}
 	.print-only {
 		display: block;
 	}
@@ -1170,6 +1175,7 @@ button.pink:focus {
 	.footer {
 		opacity: 1;
 		padding-top: 0;
+		padding-bottom: 0;
 		margin-top: -25px;
 	}
 	.footer .divider {
@@ -1239,6 +1245,23 @@ button.pink:focus {
 	}
 	.container ul li::before {
 		background-color: var(--black);
+	}
+	.container table,
+	.container tr,
+	.container th,
+	.container td {
+		border-width: 1px;
+	}
+	.container th,
+	.container td {
+		padding: 2.5px;
+	}
+	.container th,
+	.container td,
+	.container td p,
+	.container td em {
+		font-size: 14px;
+		line-height: 16px;
 	}
 	.container .section {
 		border-color: var(--black);

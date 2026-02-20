@@ -56,6 +56,42 @@ $(document).on('click', '#contrast', function () {
 	}
 });
 
+// Scale tables to fit to page when printing
+window.addEventListener('beforeprint', () => {
+	document.querySelectorAll('table').forEach(table => {
+		const parent = table.parentElement;
+		if (!parent) return;
+
+		const parent_width = parent.offsetWidth;
+		const table_width = table.offsetWidth;
+		const table_height = table.offsetHeight;
+
+		if (table_width > parent_width) {
+			const scale = parent_width / table_width;
+
+			table.style.transform = `scale(${scale})`;
+			table.style.transformOrigin = 'top left';
+
+			if (parent.matches('.accordion > div')) {
+				parent.dataset._print_height = parent.offsetHeight;
+				parent.style.height = (parent.offsetHeight - table_height * (1 - scale)) + 'px';
+			}
+		}
+	});
+});
+window.addEventListener('afterprint', () => {
+	document.querySelectorAll('table').forEach(table => {
+		table.style.transform = '';
+		table.style.transformOrigin = '';
+
+		const parent = table.parentElement;
+		if (parent?.dataset._print_height) {
+			parent.style.height = '';
+			delete parent.dataset._print_height;
+		}
+	});
+});
+
 // External links and PDFs open in new tab
 $(function() {
 	$.expr[':'].external = function(obj){
