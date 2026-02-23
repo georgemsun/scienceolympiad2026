@@ -623,6 +623,7 @@ button.pink:focus {
 	font-size: 14px;
 	text-transform: uppercase;
 	top: -100%;
+	z-index: 43110;
 }
 .navigation .skip:focus {
 	left: 50%;
@@ -773,6 +774,7 @@ button.pink:focus {
 	font-size: 24px;
 	position: fixed;
 	right: 20px;
+	z-index: 43110;
 }
 .navigation .fixed a {
 	border-color: transparent;
@@ -780,14 +782,14 @@ button.pink:focus {
 	border-width: 5px;
 	color: var(--white);
 	display: block;
-	opacity: 0.2;
+	opacity: 0.5;
 	padding: 5px 10px 0px 10px;
 	transition: opacity 0.3s;
 }
 .navigation .fixed a:hover,
 .navigation .fixed a:focus {
 	cursor: hand;
-	opacity: 0.8;
+	opacity: 1;
 }
 .navigation .fixed a:focus {
 	background-color: var(--background);
