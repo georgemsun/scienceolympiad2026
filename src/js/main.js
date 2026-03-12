@@ -117,8 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Copy links to anchors when clicked
 $(function() {
-	$('h1, h2, h3, h4, h5, h6').not('.header *').not('.trifold *').css('cursor', 'pointer');
-	$('h1, h2, h3, h4, h5, h6').not('.header *').not('.trifold *').not('.accordion *').click(function(event) {
+	$('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').not('.header *').not('.trifold *').css('cursor', 'pointer');
+	$('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').not('.header *').not('.trifold *').not('.accordion *').click(function(event) {
 		let copy = document.createElement('input');
 		copy.value = window.location.href.split(/[?#]/)[0] + "#" + event.target.id;
 		document.body.appendChild(copy);
