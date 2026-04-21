@@ -393,6 +393,7 @@ button.pink:focus {
 .container ol,
 .container ul {
 	font-size: 18px;
+	margin-top: 15px;
 	margin-left: 30px;
 }
 .container ul {
@@ -461,6 +462,12 @@ button.pink:focus {
 .container .details p,
 .container .details a {
 	color: var(--primary-yellow);
+}
+.container .details p:not(:first-child) {
+	margin-top: 5px;
+}
+.container .details p:not(:last-child) {
+	margin-bottom: 5px;
 }
 .container .indent {
 	margin-left: 50px;
