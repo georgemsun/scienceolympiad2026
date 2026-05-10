@@ -322,6 +322,10 @@ button.pink:focus {
 	margin-bottom: 20px;
 	max-width: 100%;
 }
+.container .sortable th {
+	cursor: pointer;
+	text-decoration: underline;
+}
 .container th,
 .container td {
 	padding: 7px;
@@ -526,6 +530,9 @@ button.pink:focus {
 .tiles.no-padding > a,
 .tiles.no-padding > div {
 	padding: 0;
+}
+.tiles .full-width {
+	width: calc(100% - 20px);
 }
 .tiles .one-half {
 	width: calc(50% - 20px);
@@ -968,6 +975,24 @@ button.pink:focus {
 .schedule-events th:nth-child(n+4) {
 	min-width: 75px;
 	width: 75px;
+}
+
+/*** PAGES: TEAMS ATTENDING ***/
+.teams-attending > div {
+	overflow-x: auto;
+}
+.teams-attending table {
+	margin-bottom: 0;
+	width: 100%;
+}
+.teams-attending th:nth-child(1) {
+	width: 65px;
+}
+.teams-attending th:nth-child(2) {
+	width: 65px;
+}
+.teams-attending th:nth-child(3) {
+	min-width: 200px;
 }
 
 /*** PAGES: SPONSORS ***/

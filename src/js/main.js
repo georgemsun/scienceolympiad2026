@@ -133,10 +133,12 @@ $(function() {
 
 // Automatically expand last schedule viewed
 $(document).ready(function() {
-	// Clear values if it has been at least 12 hours since last set
-	if (Date.now() - parseInt(localStorage.getItem('time'), 10) >= 12 * 60 * 60 * 1000) {
+	// Clear values if it has been at least 24 hours since last set, otherwise update last access time
+	if (Date.now() - parseInt(localStorage.getItem('time'), 10) >= 24 * 60 * 60 * 1000) {
 		localStorage.removeItem('schedules');
 		localStorage.removeItem('time');
+	} else {
+		localStorage.setItem('time', Date.now().toString());
 	}
 
 	// Restore active schedules
@@ -187,9 +189,17 @@ $(document).ready(function() {
 			var selected = $(this).text().trim();
 			if (regex_rule.test(selected)) {
 				if (selected !== range) {
-					$(this).css('color', 'var(--primary-pink)'); // Fade non-matching
+					// Fade non-matching
+					$(this).css('color', 'var(--primary-pink)');
+					if ($(this).closest('.contrast').length) {
+						$(this).css('opacity', '0.25');
+					} else {
+						$(this).css('opacity', '1');
+					}
 				} else {
-					$(this).css('color', ''); // Matching range normal
+					// Matching range normal
+					$(this).css('color', '');
+					$(this).css('opacity', '1');
 				}
 			}
 		});
@@ -214,6 +224,7 @@ $(document).ready(function() {
 					$('td').each(function() {
 						if (regex_rule.test($(this).text().trim())) {
 							$(this).css('color', '');
+							$(this).css('opacity', '1');
 						}
 					});
 					team = null;
@@ -226,5 +237,50 @@ $(document).ready(function() {
 				}
 			});
 		}
+	});
+});
+
+// Sort rows of tables with class `sortable` when headers are clicked
+$(document).ready(function() {
+	$('.sortable th').attr('title', 'Click to sort');
+	$('.sortable th').on('click', function () {
+		const table = $(this).closest('table'); // Retrieve the table
+		const rows = table.find('tr:gt(0)').toArray(); // Exclude first row from sort
+		const column = $(this).index(); // The index of the column selected
+
+		// Toggle ascending/descending sort order
+		const ascending = !$(this).data('ascending');
+		$(this).data('ascending', ascending);
+
+		rows.sort((a, b) => {
+			// Get cells to compare
+			let a_cell = $(a).children().eq(column);
+			let b_cell = $(b).children().eq(column);
+
+			// Use `data-sort-value` if present, otherwise use text value
+			let a_text = a_cell.data("sort-value") ?? a_cell.text().trim();
+			let b_text = b_cell.data("sort-value") ?? b_cell.text().trim();
+
+			// Attempt numeric conversion
+			const a_numeric = parseFloat(a_text);
+			const b_numeric = parseFloat(b_text);
+
+			// Use numeric sort if both values are numbers
+			if (!isNaN(a_numeric) && !isNaN(b_numeric)) {
+				return ascending
+					? a_numeric - b_numeric
+					: b_numeric - a_numeric;
+			}
+
+			// Otherwise use alphabetical sorting
+			return ascending
+				? a_text.localeCompare(b_text)
+				: b_text.localeCompare(a_text);
+		});
+
+		// Append rows to the table in sorted order
+		$.each(rows, function (_, row) {
+			table.append(row);
+		});
 	});
 });
