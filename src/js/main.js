@@ -284,3 +284,64 @@ $(document).ready(function() {
 		});
 	});
 });
+
+// Display bursts of confetti on window area
+function confetti() {
+	// Colors of confetti pieces
+	const colors = ['#F2C6A7', '#F26178', '#2B5597', '#2B5597', '#908C13', '#FDE021', '#DAE343', '#FF9015', '#E43D30'];
+
+	// Number of confetti bursts to display
+	const bursts = Math.floor(Math.random() * 15) + 3;
+
+	// Produce bursts of confetti
+	for (let b = 0; b < bursts; b++) {
+		// Stagger timing of bursts
+		setTimeout(() => {
+			// Randomize positions of bursts
+			const x = Math.random() * window.innerWidth;
+			const y = Math.random() * window.innerHeight;
+
+			// Generate multiple confetti pieces per burst
+			for (let i = 0; i < 40; i++) {
+				const piece = document.createElement('div');
+				piece.className = 'confetti-piece';
+
+				// Set starting position of confetti piece
+				piece.style.left = x + 'px';
+				piece.style.top = y + 'px';
+
+				// Assign random color from palette
+				piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+				// Randomize direction and distance of burst
+				const angle = Math.random() * 2 * Math.PI;
+				const distance = Math.random() * 300 + 80;
+
+				// Compute motion values and pass onto CSS animation
+				const dx = Math.cos(angle) * distance;
+				const dy = Math.sin(angle) * distance;
+				piece.style.setProperty('--dx', dx + 'px');
+				piece.style.setProperty('--dy', dy + 'px');
+
+				// Trigger animation
+				piece.style.animation = 'explode 1s ease-out forwards';
+
+				// Add confetti pieces to page
+				document.body.appendChild(piece);
+
+				// Cleanup after animation finishes
+				setTimeout(() => piece.remove(), 1200);
+			}
+		}, b * 200);
+	}
+}
+// Display bursts of confetti automatically if the page contains `confetti-automatic`
+$(document).ready(function() {
+	if ($('.confetti-automatic').length) {
+		confetti();
+	}
+});
+// Display bursts of confetti when elements with class `confetti` are clicked
+$(document).on('click', '.confetti, .confetti-automatic', function () {
+	confetti();
+});

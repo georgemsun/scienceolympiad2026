@@ -1033,6 +1033,25 @@ button.pink:focus {
 	max-width: 125px;
 }
 
+/*** CONFETTI EFFECT ***/
+.confetti,
+.confetti-automatic {
+	cursor: pointer;
+}
+.confetti-piece {
+	height: 8px;
+	pointer-events: none;
+	position: fixed;
+	width: 8px;
+	z-index: 01134;
+}
+@keyframes explode {
+	to {
+		transform: translate(var(--dx), var(--dy)) rotate(720deg);
+		opacity: 0;
+	}
+}
+
 /*** MEDIA AND RESPONSIVE ***/
 @media (max-width: 1400px) {
 	.navigation .skip {
