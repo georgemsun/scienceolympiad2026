@@ -330,6 +330,10 @@ button.pink:focus {
 .container td {
 	padding: 7px;
 }
+.container th[title],
+.container td[title] {
+	cursor: help;
+}
 .container th,
 .container td,
 .container td p,
