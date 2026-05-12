@@ -949,18 +949,22 @@ button.pink:focus {
 }
 
 /*** PAGES: SCHEDULES ***/
-.schedule-day > div,
-.schedule-events > div {
+.schedule-day div.table,
+.schedule-events div.table {
 	overflow-x: auto;
 }
 .schedule-day th:nth-child(1) {
-	min-width: 150px;
+	min-width: 100px;
+	width: 200px;
 }
 .schedule-day th:nth-child(2) {
 	width: 400px;
 }
 .schedule-day th:nth-child(3) {
-	width: 200px;
+	width: 250px;
+}
+.schedule-events .caption {
+	margin-bottom: 0;
 }
 .schedule-events table {
 	width: 100%;
