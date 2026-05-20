@@ -446,6 +446,9 @@ button.pink:focus {
 .container :not(.buttons) > a:not(.button):focus {
 	color: var(--primary-yellow);
 }
+.container .details :not(.buttons) > a:not(.button):focus {
+	color: var(--white);
+}
 .container img {
 	margin-top: 15px;
 	margin-bottom: 7.5px;
