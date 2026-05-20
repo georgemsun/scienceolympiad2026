@@ -100,7 +100,7 @@ $(function() {
 			&& !obj.href.match(/^javascript\:/)
 			&& !obj.href.match(/^$/)
 	};
-	$('a:external, a[href$=".pdf"]').attr('target', '_blank');
+	$('a:external, a[href*=".pdf"]').attr('target', '_blank');
 });
 
 // Add parameter with current datetime to `soinc.org` URLs to force cache refresh
