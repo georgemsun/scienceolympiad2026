@@ -482,8 +482,13 @@ button.pink:focus {
 }
 .container .details,
 .container .details p,
-.container .details a {
+.container .details :not(.buttons) a,
+.container .details a:not(.button),
+.container .details li {
 	color: var(--primary-yellow);
+}
+.container .details ul > li::before {
+	background-color: var(--primary-yellow);
 }
 .container .details p:not(:first-child) {
 	margin-top: 5px;
